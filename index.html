@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>3D K线图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            overflow: hidden;
+            background: #1a1a1a;
+        }
+        #kline-container {
+            width: 100%;
+            height: 100vh;
+            background: #1a1a1a;
+        }
+        .label {
+            padding: 2px;
+            text-align: center;
+            user-select: none;
+            pointer-events: none;
+        }
+        .tooltip {
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            pointer-events: none;
+            white-space: nowrap;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            position: fixed;
+            border: 1px solid #666;
+            left: 0;
+            top: 0;
+        }
+        
+        .tooltip div {
+            margin: 2px 0;
+            line-height: 1.4;
+        }
+        
+        .slider-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .slider {
+            flex: 1;
+            -webkit-appearance: none;
+            height: 8px;
+            border-radius: 4px;
+            background: #333;
+            outline: none;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #666;
+            cursor: pointer;
+            transition: background .15s ease-in-out;
+        }
+        
+        .slider::-webkit-slider-thumb:hover {
+            background: #999;
+        }
+        
+        .slider-label {
+            color: #999;
+            font-size: 12px;
+            min-width: 60px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="kline-container"></div>
+    <div class="slider-container">
+        <span class="slider-label">0%</span>
+        <input type="range" min="0" max="100" value="100" step="0.1" class="slider" id="history-slider">
+        <span class="slider-label">100%</span>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html> 
